@@ -11,8 +11,10 @@ def carregar_dados(arquivo):
     if os.path.exists(arquivo):
         with open(arquivo, "r") as f:
             return json.load(f)
-    print(ARQ_PACIENTES)
+    
     return []
+print (carregar_dados(ARQ_PACIENTES))
+
 
 def salvar_dados(arquivo, dados):
     with open(arquivo, "w") as f:

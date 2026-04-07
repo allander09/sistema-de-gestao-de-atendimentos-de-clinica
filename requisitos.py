@@ -23,8 +23,8 @@ def tela_dashboard(self):
 
     ctk.CTkLabel(self, text=f"Atendimentos Hoje: {len(atend_hoje)}",
                  font=("Arial", 14)).pack(pady=5)
-
-''''
+''''''
+''''''
 # ---------------- CADASTRO PACIENTE ----------------
 def tela_novo_paciente(self):
     for w in self.winfo_children():
@@ -189,4 +189,4 @@ for nome, func in botoes:
 tela_dashboard()
 
 root.mainloop()
-'''
+''''''

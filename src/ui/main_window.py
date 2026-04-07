@@ -11,7 +11,7 @@ class App(ctk.CTk):
         self.configure(bg_color="#ecf0f1")
 
         # ---------------- MENU LATERAL ----------------
-        menu_frame = ctk.CTkFrame(self, bg_color="#2c3e50", width=500)
+        menu_frame = ctk.CTkFrame(self, bg_color="#2c3e50", width=00)
         menu_frame.pack(side="left", fill="y")
 
         # Título do sistema no menu
@@ -68,16 +68,22 @@ class App(ctk.CTk):
                 self.content_frame = FrameDashboard(self, fg_color="#ecf0f1", corner_radius=0)
                 self.content_frame.pack(side="right", expand=True, fill="both")
             case "Pacientes":
-                self.content_frame = FrameDashboard(self, fg_color="#ecf0f1", corner_radius=0)
+                self.content_frame = FrameListaPacientes(self, fg_color="#ecf0f1", corner_radius=0)
+                self.content_frame.pack( expand=True, fill="both")
+ 
+                
+            case "Atendimentos":
+                self.content_frame = FrameHistorico(self, fg_color="#ecf0f1", corner_radius=0)
                 self.content_frame.pack(side="right", expand=True, fill="both")
                 
-                ...   
-            case "Atendimentos":
                 
-                
-                ...
             case "Novo Paciente":
+                self.content_frame = FrameNovoPaciente(self, fg_color="#ecf0f1", corner_radius=0)
+                self.content_frame.pack(side="right", expand=True, fill="both")
+
                 
                 ...
             case "Novo Atendimento":
-                ...
+                self.content_frame = FrameRegistroAtendimento(self, fg_color="#ecf0f1", corner_radius=0)
+                self.content_frame.pack(side="right", expand=True, fill="both")
+
