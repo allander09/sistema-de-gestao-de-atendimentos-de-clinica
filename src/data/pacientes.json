@@ -68,19 +68,5 @@
         "data_nascimento": "1996-04-14",
         "telefone": "88900000000",
         "email": "lucas.ribeiro@email.com"
-    },
-    {
-        "nome": "alander lima",
-        "nascimento": "10/8/2001",
-        "telefone": "1671671561",
-        "email": "allander@ahaghah",
-        "documento": "618.616.918-84"
-    },
-    {
-        "nome": "karla braga leão junior",
-        "nascimento": "09/10/2002",
-        "telefone": "768187177",
-        "email": "karlau@hagaghaj",
-        "documento": "717.615.177-84"
     }
 ]

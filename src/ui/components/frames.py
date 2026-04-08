@@ -131,8 +131,9 @@ class FrameNovoPaciente(ctk.CTkFrame):
         pacientes = carregar_dados(ARQ_PACIENTES)
 
         novo_paciente = {
+            "id": len(pacientes) + 1,
             "nome": self.nome.get(),
-            "nascimento": self.nascimento.get(),
+            "data_nascimento": self.nascimento.get(),
             "telefone": self.telefone.get(),
             "email": self.email.get(),
             "documento": self.documento.get()
