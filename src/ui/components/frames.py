@@ -157,16 +157,16 @@ class FrameRegistroAtendimento(ctk.CTkFrame):
         self.paciente = paciente
 
         ctk.CTkLabel(self, text="Registrar Atendimento",
-                     font=("Arial", 20, "bold")).pack(pady=10)
+                     text_color="#080808",font=("Arial", 20, "bold")).pack(pady=10)
 
-        self.tipo = ctk.CTkEntry(self, placeholder_text="Tipo de atendimento")
+        self.tipo = ctk.CTkEntry(self, fg_color="black", placeholder_text="Tipo de atendimento")
         self.tipo.pack(pady=5)
 
-        self.obs = ctk.CTkEntry(self, placeholder_text="Observações")
+        self.obs = ctk.CTkEntry(self, fg_color="black", placeholder_text="Observações")
         self.obs.pack(pady=5)
 
         self.status = ctk.CTkOptionMenu(self,
-                                       values=["realizado", "em acompanhamento"])
+                                       fg_color="black", values=["realizado", "em acompanhamento"])
         self.status.pack(pady=5)
 
         ctk.CTkButton(self, text="Salvar", command=self.salvar).pack(pady=10)
