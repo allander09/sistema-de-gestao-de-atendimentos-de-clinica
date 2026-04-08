@@ -1,21 +1,21 @@
 import json
-import os
+from pathlib import Path
 
 # ---------------- ARQUIVOS ----------------
-# Não reconhece o caminho -- ajustar -- fix
-ARQ_PACIENTES = os.path.abspath("./data/pacientes.json")
-ARQ_ATENDIMENTOS = os.path.abspath("./data/atendimentos.json")
+BASE_DIR = Path(__file__).resolve().parent.parent
+ARQ_PACIENTES = BASE_DIR / "data" / "pacientes.json"
+ARQ_ATENDIMENTOS = BASE_DIR / "data" / "atendimentos.json"
 
 # ---------------- FUNÇÕES JSON ----------------
 def carregar_dados(arquivo):
-    if os.path.exists(arquivo):
-        with open(arquivo, "r") as f:
+    arquivo = Path(arquivo)
+    if arquivo.exists():
+        with arquivo.open("r", encoding="utf-8") as f:
             return json.load(f)
-    
     return []
-print (carregar_dados(ARQ_PACIENTES))
-
 
 def salvar_dados(arquivo, dados):
-    with open(arquivo, "w") as f:
-        json.dump(dados, f, indent=4)
+    arquivo = Path(arquivo)
+    arquivo.parent.mkdir(parents=True, exist_ok=True)
+    with arquivo.open("w", encoding="utf-8") as f:
+        json.dump(dados, f, indent=4, ensure_ascii=False)
