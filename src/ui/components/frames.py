@@ -14,20 +14,20 @@ class FrameDashboard(ctk.CTkFrame):
         atend_hoje = [a for a in atendimentos if a["data"] == hoje]
 
         ctk.CTkLabel(self, text="Dashboard", font=("Arial", 22, "bold"),
-                     text_color="#080808").pack(pady=20)
+                     text_color="#080808").grid(row=0, column=0, columnspan=2)
+        
+        #frame_cards = ctk.CTkFrame(self).pack(padx=10, pady=10)
 
         FrameCard(self, valor=len(pacientes),
                   descricao="Pacientes",
                   corner_radius=10
-                  ).pack(pady=5)
-
-        ctk.CTkLabel(self, text=f"Total de Atendimentos: {len(atendimentos)}",
-                     text_color="#080808",
-                     font=("Arial", 14)).pack(pady=5)
-
-        ctk.CTkLabel(self, text=f"Atendimentos Hoje: {len(atend_hoje)}",
-                     text_color="#080808",
-                     font=("Arial", 14)).pack(pady=5)
+                  ).grid(row=1, column=0)
+        
+        FrameCard(self, valor=35, descricao='Atendimentos', corner_radius=10
+                  ).grid(row=1, column=1)
+        
+        FrameCard(self, valor=15, descricao='Atendimentos do Dia', corner_radius=10
+                  ).grid(row=1, column=2)
 
 
 #------------------- pacientes----------------------
@@ -77,7 +77,7 @@ class FrameHistorico(ctk.CTkFrame):
         super().__init__(master, **kwargs)
 
         ctk.CTkLabel(self,
-                     text=f"Histórico - {paciente['id']}",
+                     text=f"Histórico - {paciente['id_nome']}",
                      font=("Arial", 18, "bold")).pack(pady=10)
 
         atendimentos = carregar_dados(ARQ_ATENDIMENTOS)

@@ -10,6 +10,8 @@ class App(ctk.CTk):
         self.geometry("1000x600")
         self.configure(bg_color="#ecf0f1")
 
+        ctk.set_appearance_mode('dark')
+
         # ---------------- MENU LATERAL ----------------
         menu_frame = ctk.CTkFrame(self, bg_color="#2c3e50", width=00)
         menu_frame.pack(side="left", fill="y")
@@ -66,9 +68,9 @@ class App(ctk.CTk):
         match texto:
             case "Dashboard":
                 self.content_frame = FrameDashboard(self, fg_color="#ecf0f1", corner_radius=0)
-                self.content_frame.pack(side="right", expand=True, fill="both")
+                self.content_frame.pack(side="right", fill="x")
             case "Pacientes":
-                self.content_frame = FrameListaPacientes(self, fg_color="#ecf0f1", corner_radius=0)
+                self.content_frame = FrameListaPacientes(self, fg_color="#ecf0f1", corner_radius=2)
                 self.content_frame.pack( expand=True, fill="both")
  
                 
