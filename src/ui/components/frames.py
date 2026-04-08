@@ -108,25 +108,34 @@ class FrameNovoPaciente(ctk.CTkFrame):
                      font=("Arial", 20, "bold"),
                      text_color="#080808").pack(pady=15)
 
-        self.nome = ctk.CTkEntry(self, placeholder_text="Nome completo")
-        self.nome.pack(pady=5, fill="x", padx=20)
+        self.nome = ctk.CTkEntry(self, placeholder_text="Nome completo", height=40, font=("Arial", 14))
+        self.nome.pack(pady=10, fill="x", padx=100)
 
-        self.nascimento = ctk.CTkEntry(self, placeholder_text="Data de nascimento")
-        self.nascimento.pack(pady=5, fill="x", padx=20)
+        self.frame_tel_data = ctk.CTkFrame(self, fg_color="#f0f0f0", corner_radius=10)
+        self.nascimento = ctk.CTkEntry(self.frame_tel_data, placeholder_text="Data de nascimento", height=40, font=("Arial", 14))
+        self.telefone = ctk.CTkEntry(self.frame_tel_data, placeholder_text="Telefone", height=40, font=("Arial", 14))
 
-        self.telefone = ctk.CTkEntry(self, placeholder_text="Telefone")
-        self.telefone.pack(pady=5, fill="x", padx=20)
+        self.frame_tel_data.pack(pady=10, fill="x", padx=100)
+        self.telefone.pack(pady=10, padx=(0, 5), fill="both", side='left', expand=True)
+        self.nascimento.pack(pady=10, padx=(0, 5), fill="both", side='left', expand=True)
 
-        self.email = ctk.CTkEntry(self, placeholder_text="E-mail")
-        self.email.pack(pady=5, fill="x", padx=20)
 
-        self.documento = ctk.CTkEntry(self, placeholder_text="CPF ou RG")
-        self.documento.pack(pady=5, fill="x", padx=20)
+        self.email = ctk.CTkEntry(self, placeholder_text="E-mail", height=40, font=("Arial", 14))
+        self.email.pack(pady=10, fill="x", padx=100)
+
+        self.frame_doc = ctk.CTkFrame(self, fg_color="#f0f0f0", corner_radius=10)
+        self.tipo_documento = ctk.CTkOptionMenu(self.frame_doc, values=["CPF", "RG"], height=40, font=("Arial", 14))
+        self.documento = ctk.CTkEntry(self.frame_doc, placeholder_text="Preencha o campo", height=40, font=("Arial", 14))
+        
+        self.tipo_documento.pack(pady=10, padx=(0, 5), fill="x", side='left')
+        self.documento.pack(pady=10, padx=(0, 5), fill="both", side='left', expand=True)
+        self.frame_doc.pack(pady=10, fill="x", padx=100)
+
 
         ctk.CTkButton(self,
-                      text="Salvar Paciente",
-                      command=self.salvar).pack(pady=15)
-
+                      text="Cadastrar",
+                      command=self.salvar, height=40).pack(pady=15)
+        
     def salvar(self):
         pacientes = carregar_dados(ARQ_PACIENTES)
 
@@ -154,27 +163,34 @@ class FrameNovoPaciente(ctk.CTkFrame):
             self.atualizar_lista_callback()
 
 #--------- novo atendimento------------
-
 class FrameRegistroAtendimento(ctk.CTkFrame):
-    def __init__(self, master, paciente=None, **kwargs):
+    def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
+        
+        self.frame_atendimento = ctk.CTkFrame(self, fg_color="#f0f0f0", corner_radius=10)
 
-        self.paciente = paciente
-
-        ctk.CTkLabel(self, text="Registrar Atendimento",
+        ctk.CTkLabel(self.frame_atendimento, text="Registrar Atendimento",
                      text_color="#080808",font=("Arial", 20, "bold")).pack(pady=10)
+        
+        self.paciente_id = ctk.CTkEntry(self.frame_atendimento, placeholder_text="ID do paciente", height=40, font=("Arial", 14))
+        self.paciente_id.pack(pady=10, fill="x", padx=100)
 
-        self.tipo = ctk.CTkEntry(self, fg_color="black", placeholder_text="Tipo de atendimento")
-        self.tipo.pack(pady=5)
+        self.tipo = ctk.CTkOptionMenu(self.frame_atendimento, values=["Consulta", "Exame", "Tratamento"], height=40, font=("Arial", 14))
+        self.tipo.pack(pady=10, fill="x", padx=100)
 
-        self.obs = ctk.CTkEntry(self, fg_color="black", placeholder_text="Observações")
-        self.obs.pack(pady=5)
+        ctk.CTkLabel(self.frame_atendimento, text="Observações", font=("Arial", 14), text_color="#272525").pack(padx=100, anchor='w')
+        self.obs = ctk.CTkTextbox(self.frame_atendimento, fg_color="black", height=100)
+        self.obs.pack(pady=10, fill="x", padx=100)
 
-        self.status = ctk.CTkOptionMenu(self,
-                                       fg_color="black", values=["realizado", "em acompanhamento"])
-        self.status.pack(pady=5)
+        self.status = ctk.CTkOptionMenu(self.frame_atendimento,
+                                       values=["Realizado", "Em Acompanhamento"], height=40, font=("Arial", 14))
+        self.status.pack(pady=(10, 0), fill="x", padx=100)
 
-        ctk.CTkButton(self, text="Salvar", command=self.salvar).pack(pady=10)
+        ctk.CTkButton(self.frame_atendimento, text="Salvar", command=self.salvar, height=40, font=("Arial", 14)).pack(pady=10)
+
+        self.frame_atendimento.pack(padx=20, pady=20, fill="x")
+
+
 
     def salvar(self):
         atendimentos = carregar_dados(ARQ_ATENDIMENTOS)
