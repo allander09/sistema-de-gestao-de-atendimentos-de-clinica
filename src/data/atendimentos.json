@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "paciente_id": 1,
+        "data": "2026-04-08",
+        "tipo": "Consulta",
+        "observacoes": "Paciente apresentou melhora",
+        "status": "Realizado"
+    },
+    {
+        "id": 2,
+        "paciente_id": 2,
+        "data": "2026-04-21",
+        "tipo": "Exame",
+        "observacoes": "Solicitado exame de sangue",
+        "status": "Pendente"
+    },
+    {
+        "id": 3,
+        "paciente_id": 3,
+        "data": "2026-04-22",
+        "tipo": "Consulta",
+        "observacoes": "Queixa de dor de cabeça",
+        "status": "Realizado"
+    },
+    {
+        "id": 4,
+        "paciente_id": 4,
+        "data": "2026-04-23",
+        "tipo": "Retorno",
+        "observacoes": "Acompanhamento de tratamento",
+        "status": "Agendado"
+    },
+    {
+        "id": 5,
+        "paciente_id": 5,
+        "data": "2026-04-24",
+        "tipo": "Consulta",
+        "observacoes": "Início de tratamento",
+        "status": "Realizado"
+    },
+    {
+        "id": 6,
+        "paciente_id": 6,
+        "data": "2026-04-25",
+        "tipo": "Exame",
+        "observacoes": "Exame de rotina",
+        "status": "Realizado"
+    },
+    {
+        "id": 7,
+        "paciente_id": 7,
+        "data": "2026-04-26",
+        "tipo": "Consulta",
+        "observacoes": "Paciente relatou insônia",
+        "status": "Agendado"
+    },
+    {
+        "id": 8,
+        "paciente_id": 8,
+        "data": "2026-04-27",
+        "tipo": "Retorno",
+        "observacoes": "Avaliação pós-tratamento",
+        "status": "Pendente"
+    },
+    {
+        "id": 9,
+        "paciente_id": 9,
+        "data": "2026-04-28",
+        "tipo": "Consulta",
+        "observacoes": "Check-up geral",
+        "status": "Realizado"
+    },
+    {
+        "id": 10,
+        "paciente_id": 10,
+        "data": "2026-04-29",
+        "tipo": "Exame",
+        "observacoes": "Encaminhado para raio-x",
+        "status": "Agendado"
+    }
+]
