@@ -68,10 +68,10 @@ class App(ctk.CTk):
         match texto:
             case "Dashboard":
                 self.content_frame = FrameDashboard(self, fg_color="#ecf0f1", corner_radius=0)
-                self.content_frame.pack(side="right", fill="x")
+                self.content_frame.pack(side="right", expand=True, fill="both")
             case "Pacientes":
                 self.content_frame = FrameListaPacientes(self, fg_color="#ecf0f1", corner_radius=2)
-                self.content_frame.pack( expand=True, fill="both")
+                self.content_frame.pack(side="right", expand=True, fill="both")
  
                 
             case "Atendimentos":
