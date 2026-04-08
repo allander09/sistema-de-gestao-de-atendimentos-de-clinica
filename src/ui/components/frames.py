@@ -14,20 +14,24 @@ class FrameDashboard(ctk.CTkFrame):
         atend_hoje = [a for a in atendimentos if a["data"] == hoje]
 
         ctk.CTkLabel(self, text="Dashboard", font=("Arial", 22, "bold"),
-                     text_color="#080808").grid(row=0, column=0, columnspan=2)
+                     text_color="#080808").pack(pady=10)
         
-        #frame_cards = ctk.CTkFrame(self).pack(padx=10, pady=10)
+        frame_cards = ctk.CTkFrame(self, fg_color="#f0f0f0", corner_radius=10)
 
-        FrameCard(self, valor=len(pacientes),
+        FrameCard(frame_cards, valor=len(pacientes),
                   descricao="Pacientes",
                   corner_radius=10
-                  ).grid(row=1, column=0)
+                  ).pack(pady=10, padx=10, fill="both", expand=True, side='left')
         
-        FrameCard(self, valor=35, descricao='Atendimentos', corner_radius=10
-                  ).grid(row=1, column=1)
+        FrameCard(frame_cards, valor=len(atendimentos), descricao='Atendimentos', corner_radius=10
+                  ).pack(pady=10, padx=10, fill="both", expand=True, side='left')
         
-        FrameCard(self, valor=15, descricao='Atendimentos do Dia', corner_radius=10
-                  ).grid(row=1, column=2)
+        
+        FrameCard(frame_cards, valor=len(atend_hoje), descricao='Atendimentos do Dia', corner_radius=10
+                  ).pack(pady=10, padx=10, fill="both", expand=True, side='left')
+        
+        frame_cards.pack(padx=20, fill="x")
+        
 
 
 #------------------- pacientes----------------------
