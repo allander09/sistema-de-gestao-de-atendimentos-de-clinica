@@ -81,21 +81,45 @@ class FrameListaPacientes(ctk.CTkFrame):
 #----------------atendimento---------------- 
 
 class FrameHistorico(ctk.CTkFrame):
-    def __init__(self, master,paciente=None, **kwargs):
+    def __init__(self, master, paciente=None, **kwargs):
         super().__init__(master, **kwargs)
 
-        ctk.CTkLabel(self,
-                     text=f"Histórico - {paciente['id_nome']}",
-                     font=("Arial", 18, "bold")).pack(pady=10)
+        if not paciente:
+            ctk.CTkLabel(
+                self,
+                text="Nenhum paciente selecionado",
+                font=("Arial", 18, "bold"),
+                text_color="black"
+            ).pack(pady=20)
+            return
 
+        nome = paciente.get("id_nome", "Paciente")
+
+        ctk.CTkLabel(
+            self,
+            text=f"Histórico - {nome}",
+            font=("Arial", 18, "bold"),
+            text_color="black"
+        ).pack(pady=10)
+        
         atendimentos = carregar_dados(ARQ_ATENDIMENTOS)
 
-        lista = [a for a in atendimentos if a["paciente_id"] == paciente["id"]]
+        lista = [
+            a for a in atendimentos
+            if a.get("paciente_id") == paciente.get("id")
+        ]
+
+        if not lista:
+            ctk.CTkLabel(
+                self,
+                text="Nenhum atendimento encontrado",
+                text_color="black"
+            ).pack(pady=10)
+            return
 
         for a in lista:
-            texto = f"{a['data']} - {a['tipo']} ({a['status']})"
-            ctk.CTkLabel(self, text=texto).pack(pady=2)
-
+            texto = f"{a.get('data', '---')} - {a.get('tipo', '---')} ({a.get('status', '---')})"
+            ctk.CTkLabel(self, text=texto, text_color="black").pack(pady=2)
 #--------------novo paciente--------------
 class FrameNovoPaciente(ctk.CTkFrame):
     def __init__(self, master, atualizar_lista_callback=None, **kwargs):
@@ -183,7 +207,7 @@ class FrameRegistroAtendimento(ctk.CTkFrame):
         self.obs.pack(pady=10, fill="x", padx=100)
 
         self.status = ctk.CTkOptionMenu(self.frame_atendimento,
-                                       values=["Realizado", "Em Acompanhamento"], height=40, font=("Arial", 14))
+                                       values=["Realizado", "Em Acompanhamento", "agendado"], height=40, font=("Arial", 14))
         self.status.pack(pady=(10, 0), fill="x", padx=100)
 
         ctk.CTkButton(self.frame_atendimento, text="Salvar", command=self.salvar, height=40, font=("Arial", 14)).pack(pady=10)
