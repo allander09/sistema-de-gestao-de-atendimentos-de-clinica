@@ -78,5 +78,40 @@
         "tipo": "Exame",
         "observacoes": "Encaminhado para raio-x",
         "status": "Agendado"
+    },
+    {
+        "paciente_id": "11",
+        "data": "2026-04-14",
+        "tipo": "Consulta",
+        "observacoes": "",
+        "status": "Realizado"
+    },
+    {
+        "paciente_id": "11",
+        "data": "2026-04-14",
+        "tipo": "Consulta",
+        "observacoes": "",
+        "status": "Realizado"
+    },
+    {
+        "paciente_id": "1",
+        "data": "2026-04-14",
+        "tipo": "Consulta",
+        "observacoes": "",
+        "status": "Realizado"
+    },
+    {
+        "paciente_id": "11",
+        "data": "2026-04-14",
+        "tipo": "Consulta",
+        "observacoes": "",
+        "status": "Realizado"
+    },
+    {
+        "paciente_id": "11",
+        "data": "2026-04-14",
+        "tipo": "Consulta",
+        "observacoes": "",
+        "status": "Realizado"
     }
 ]

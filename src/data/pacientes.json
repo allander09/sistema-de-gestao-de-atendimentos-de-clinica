@@ -78,5 +78,13 @@
         "telefone": "88900000000",
         "email": "lucas.ribeiro@email.com",
         "numero_documento": "RG 56.789.012-6"
+    },
+    {
+        "id": 11,
+        "nome": "clara sousa melo",
+        "data_nascimento": "26-02-2000",
+        "telefone": "61516516",
+        "email": "clara@gmail.com",
+        "documento": "645.290.716-65"
     }
 ]

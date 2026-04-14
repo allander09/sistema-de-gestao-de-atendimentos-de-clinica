@@ -214,16 +214,16 @@ class FrameRegistroAtendimento(ctk.CTkFrame):
 
         self.frame_atendimento.pack(padx=20, pady=20, fill="x")
 
-
-
     def salvar(self):
         atendimentos = carregar_dados(ARQ_ATENDIMENTOS)
 
+        paciente_id = self.paciente_id.get()
+
         novo = {
-            "paciente": self.paciente["nome"],
+            "paciente_id": paciente_id,
             "data": str(date.today()),
             "tipo": self.tipo.get(),
-            "observacoes": self.obs.get(),
+            "observacoes": self.obs.get("1.0", "end").strip(),
             "status": self.status.get()
         }
 
@@ -232,6 +232,20 @@ class FrameRegistroAtendimento(ctk.CTkFrame):
 
 
 
+    def ir_para_historico(self, paciente_id):
+        pacientes = carregar_dados(ARQ_PACIENTES)
+
+        paciente = next(
+            (p for p in pacientes if str(p.get("id")) == str(paciente_id)),
+            None
+        )
+
+        # limpar tela atual
+        for widget in self.master.winfo_children():
+            widget.destroy()
+
+        # abrir histórico
+        FrameHistorico(self.master, paciente=paciente).pack(fill="both", expand=True)
 
 # ---------------- CARDS ----------------
 class FrameCard(ctk.CTkFrame):
@@ -266,5 +280,3 @@ class FrameCardPacientes(ctk.CTkFrame):
         self.data_nascimento.pack(padx=10, pady=(0, 0), anchor='w')
         self.telefone.pack(padx=10, pady=(0, 0), anchor='w')
         self.email.pack(padx=10, pady=(0, 10), anchor='w')
-
-  
